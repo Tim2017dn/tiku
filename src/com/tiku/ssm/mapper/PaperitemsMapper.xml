@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiku.ssm.mapper.PaperitemsMapper" >
+
+<insert id="insertPI" parameterType="Paperitems">
+insert into Paperitems(pid,id)
+values (#{pid,jdbcType=INTEGER},#{id,jdbcType=INTEGER})
+</insert>
+
+
+<!-- public Integer[] findbyPid(Integer pid) -->
+<select id="findbyPid" parameterType="Integer" resultType="Integer">
+	select id from Paperitems
+	where pid=#{pid}
+</select>
+
+
+<select id="deletePI" parameterType="Integer">
+	delete from Paperitems
+	where pid=#{pid}
+
+</select>
+
+</mapper>

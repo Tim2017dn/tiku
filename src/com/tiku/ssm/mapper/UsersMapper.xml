@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiku.ssm.mapper.UsersMapper" >
+
+<!-- List<Users> findUserByUsername(String username); -->
+<select id="findUserByUsername" parameterType="String" resultType="Users">
+	select * from users where username=#{username}
+</select>
+
+<select id="findOneUserByUsername" parameterType="String" resultType="Users">
+	select * from users where username=#{username}
+</select>
+
+<select id="updateUser" parameterType="Users" >
+	update users
+	<set>
+		password=#{password}
+	</set>
+	 where username=#{username}	
+</select>
+
+<insert id="RegUser" parameterType="Users">
+
+	Insert into users(username,password,subject,title,realname)
+	values (#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{subject,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{realname,jdbcType=VARCHAR})
+</insert>
+
+</mapper>

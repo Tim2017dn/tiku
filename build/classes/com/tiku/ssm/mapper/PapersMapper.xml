@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiku.ssm.mapper.PapersMapper" >
+
+<insert id="insert" parameterType="Papers" >
+	insert into Papers(pname,creater) 
+	values (#{pname,jdbcType=VARCHAR},#{creater,jdbcType=VARCHAR})
+</insert>
+
+<select id="findAll" resultType="Papers">
+	select * from Papers
+
+</select>
+
+<select id="findPaper" parameterType="Papers" resultType="Papers" >
+	select * from papers
+	<where>
+				pname = #{pname} and creater = #{creater}
+	</where>
+
+</select>
+
+
+<!-- Papers findPaperByPid(Integer pid); -->
+	<select id="findPaperByPid" parameterType="Integer" resultType="Papers">
+		select * from papers
+		where pid=#{pid}
+	
+	</select>
+
+<select id="deletePaper" parameterType="Integer">
+	delete from papers
+	where pid=#{pid}
+</select>
+
+</mapper>
